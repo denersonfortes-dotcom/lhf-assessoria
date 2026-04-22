@@ -1,65 +1,127 @@
 'use client';
 
+import { useState } from 'react';
 import styles from './Footer.module.css';
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
+  const handleNavClick = (sectionId: string) => {
+    // Se estamos na home, faz scroll. Se não, vai para home com anchor
+    if (window.location.pathname === '/') {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      window.location.href = `/#${sectionId}`;
+    }
+  };
+
+  const handleHomeClick = () => {
+    // Se está na home, volta pro topo
+    if (window.location.pathname === '/') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      // Se não está na home, vai pra home
+      window.location.href = '/';
+    }
+  };
 
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
-        {/* Coluna 1: Branding */}
+        {/* Coluna 1: Logo e Tagline */}
         <div className={styles.column}>
-          <div className={styles.logo}>LHF</div>
+          <button 
+            onClick={handleHomeClick}
+            className={styles.logoButton}
+          >
+            <img 
+              src="/images/logo_amarela.png" 
+              alt="LHF Assessoria Esportiva"
+              className={styles.footerLogo}
+            />
+          </button>
           <p className={styles.tagline}>
             Evolua com apoio, método e propósito.
           </p>
-          <div className={styles.socials}>
-            <a href="#" className={styles.socialLink} title="Instagram">
+          
+          {/* Social Icons */}
+          <div className={styles.socialIcons}>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className={styles.socialIcon}>
               @
             </a>
-            <a href="#" className={styles.socialLink} title="WhatsApp">
+            <a href="https://wa.me/5547988123456" target="_blank" rel="noopener noreferrer" className={styles.socialIcon}>
               💬
             </a>
-            <a href="#" className={styles.socialLink} title="LinkedIn">
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className={styles.socialIcon}>
               in
             </a>
           </div>
         </div>
 
-        {/* Coluna 2: Links */}
+        {/* Coluna 2: Acesso Rápido */}
         <div className={styles.column}>
           <h4 className={styles.columnTitle}>Acesso Rápido</h4>
-          <ul className={styles.links}>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">Sobre Nós</a></li>
-            <li><a href="#services">Modalidades</a></li>
-            <li><a href="#testimonials">Comunidade</a></li>
-            <li><a href="#contact">Contato</a></li>
-          </ul>
+          <nav className={styles.quickLinks}>
+            <button 
+              onClick={handleHomeClick}
+              className={styles.quickLink}
+            >
+              Home
+            </button>
+            <button 
+              onClick={() => handleNavClick('about')}
+              className={styles.quickLink}
+            >
+              Sobre Nós
+            </button>
+            <button 
+              onClick={() => handleNavClick('services')}
+              className={styles.quickLink}
+            >
+              Modalidades
+            </button>
+            <button 
+              onClick={() => handleNavClick('testimonials')}
+              className={styles.quickLink}
+            >
+              Comunidade
+            </button>
+            <button 
+              onClick={() => handleNavClick('contact')}
+              className={styles.quickLink}
+            >
+              Contato
+            </button>
+          </nav>
         </div>
 
         {/* Coluna 3: Contato */}
         <div className={styles.column}>
           <h4 className={styles.columnTitle}>Contato</h4>
-          <ul className={styles.contactLinks}>
-            <li>
-              <a href="https://wa.me/YOUR_NUMBER">WhatsApp</a>
-            </li>
-            <li>
-              <a href="mailto:contato@lhf.com">Email</a>
-            </li>
-            <li>
-              <a href="#">Endereço</a>
-            </li>
-          </ul>
+          <div className={styles.contactInfo}>
+            <p>
+              <strong>Email:</strong><br />
+              contato@lhfassessoria.com.br
+            </p>
+            <p>
+              <strong>WhatsApp:</strong><br />
+              <a href="https://wa.me/5547988123456">(47) 98812-3456</a>
+            </p>
+            <p>
+              <strong>Localização:</strong><br />
+              Joinville, SC
+            </p>
+          </div>
         </div>
       </div>
 
-      {/* Copyright */}
+      {/* Divisor */}
       <div className={styles.divider}></div>
+
+      {/* Copyright */}
       <div className={styles.copyright}>
-        <p>© {currentYear} LHF Assessoria Esportiva. Todos os direitos reservados.</p>
+        <p>&copy; 2026 LHF Assessoria Esportiva. Todos os direitos reservados.</p>
       </div>
     </footer>
   );

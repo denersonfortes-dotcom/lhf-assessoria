@@ -1,3 +1,5 @@
+'use client';
+
 import HeroVideo from './components/HeroVideo';
 import About from './components/About';
 import Services from './components/Services';
@@ -13,6 +15,7 @@ export default function Home() {
       <Services />
       <Testimonials />
       <CTAFinal />
+      <div className="divider"></div>
       <Footer />
     </main>
   );

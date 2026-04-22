@@ -6,60 +6,98 @@
   background-color: var(--color-primary);
   z-index: 1000;
   transition: all 300ms ease-in-out;
-  padding: 24px 0;
-  box-shadow: none;
+  padding: 0 var(--spacing-lg);
+  height: 85px;
+  display: flex;
+  align-items: center;
+  border-bottom: none;
 }
 
 .header.scrolled {
-  padding: 16px 0;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 var(--spacing-lg);
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 48px;
+  padding: 0;
+  height: 85px;
 }
 
-/* Logo */
+/* Logo - Imagem */
 .logo {
-  font-size: 20px;
-  font-weight: 800;
-  color: var(--color-dark);
-  letter-spacing: 2px;
-  white-space: nowrap;
-}
-
-/* Navigation Desktop */
-.nav {
   display: flex;
   align-items: center;
-  gap: 40px;
+  justify-content: center;
+  flex-shrink: 0;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  z-index: 1001;
+}
+
+.logoButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 200ms ease-in-out;
+  margin: 0;
+  height: auto;
+  width: auto;
+}
+
+.logoButton:hover {
+  transform: scale(1.05);
+}
+
+.logoImage {
+  height: 56px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  max-width: 100%;
+}
+
+/* Menu Desktop */
+.nav {
+  display: flex;
+  gap: 32px;
   flex: 1;
+  align-items: center;
+  justify-content: center;
 }
 
 .navLink {
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--color-dark);
   text-decoration: none;
   transition: all 200ms ease-in-out;
   position: relative;
+  padding: 8px 0;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
 }
 
 .navLink::after {
   content: '';
   position: absolute;
-  bottom: -8px;
+  bottom: 0;
   left: 0;
   width: 0;
   height: 2px;
   background-color: var(--color-dark);
-  transition: width 300ms ease-in-out;
+  transition: width 200ms ease-in-out;
 }
 
 .navLink:hover::after {
@@ -71,73 +109,121 @@
   background-color: var(--color-dark);
   color: var(--color-primary);
   padding: 12px 28px;
-  font-weight: 700;
-  font-size: 14px;
   border-radius: var(--radius-md);
+  font-weight: 800;
+  font-size: 14px;
   border: none;
   cursor: pointer;
+  transition: all 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
   text-transform: uppercase;
   letter-spacing: 0.6px;
-  transition: all 300ms ease-in-out;
   white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .ctaButton:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
 .ctaButton:active {
-  transform: scale(0.98);
+  transform: translateY(-2px) scale(0.98);
 }
 
-/* Mobile Menu Button */
-.mobileMenuButton {
+/* Hamburger */
+.hamburger {
   display: none;
+  flex-direction: column;
+  gap: 6px;
   background: none;
   border: none;
-  font-size: 24px;
-  color: var(--color-dark);
   cursor: pointer;
   padding: 8px;
+  margin: 0;
+}
+
+.hamburger span {
+  width: 24px;
+  height: 3px;
+  background-color: var(--color-dark);
+  border-radius: 2px;
+  transition: all 300ms ease-in-out;
 }
 
 /* Mobile Menu */
 .mobileMenu {
   display: none;
   position: absolute;
-  top: 100%;
+  top: 85px;
   left: 0;
   right: 0;
   background-color: var(--color-primary);
-  padding: 24px var(--spacing-lg);
   flex-direction: column;
-  gap: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  gap: 0;
+  padding: 0;
+  list-style: none;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  animation: slideDown 300ms ease-in-out;
+  margin: 0;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .mobileNavLink {
-  font-size: 15px;
-  font-weight: 600;
+  padding: 16px var(--spacing-lg);
   color: var(--color-dark);
+  font-size: 15px;
+  font-weight: 700;
   text-decoration: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   transition: all 200ms ease-in-out;
-  display: block;
-  padding: 12px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  width: 100%;
+  text-align: left;
 }
 
 .mobileNavLink:hover {
-  opacity: 0.7;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.mobileCTAButton {
+  padding: 16px var(--spacing-lg);
+  background-color: var(--color-dark);
+  color: var(--color-primary);
+  border: none;
+  font-weight: 800;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 300ms ease-in-out;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin: 16px var(--spacing-lg);
+  border-radius: var(--radius-md);
+  font-family: inherit;
+}
+
+.mobileCTAButton:active {
+  transform: scale(0.98);
 }
 
 /* Responsivo */
 @media (max-width: 1024px) {
-  .container {
-    gap: 32px;
-  }
-
   .nav {
-    gap: 32px;
+    gap: 24px;
   }
 
   .navLink {
@@ -145,53 +231,66 @@
   }
 
   .ctaButton {
-    padding: 11px 24px;
+    padding: 10px 24px;
     font-size: 13px;
+  }
+
+  .logoImage {
+    height: 49px;
   }
 }
 
 @media (max-width: 768px) {
   .header {
-    padding: 16px 0;
+    padding: 0 var(--spacing-sm);
   }
 
   .container {
     gap: 16px;
-    padding: 0 var(--spacing-sm);
   }
 
   .nav {
     display: none;
   }
 
-  .ctaButton {
-    display: none;
-  }
-
-  .mobileMenuButton {
-    display: block;
+  .hamburger {
+    display: flex;
   }
 
   .mobileMenu {
     display: flex;
   }
+
+  .ctaButton {
+    display: none;
+  }
+
+  .logoImage {
+    height: 42px;
+  }
 }
 
 @media (max-width: 480px) {
-  .logo {
-    font-size: 18px;
-  }
-
-  .container {
+  .header {
     padding: 0 var(--spacing-sm);
   }
 
-  .mobileMenuButton {
-    font-size: 20px;
-    padding: 6px;
+  .container {
+    gap: 12px;
+  }
+
+  .logoImage {
+    height: 35px;
   }
 
   .mobileNavLink {
+    padding: 14px var(--spacing-sm);
     font-size: 14px;
+  }
+
+  .mobileCTAButton {
+    padding: 14px var(--spacing-sm);
+    margin: 12px var(--spacing-sm);
+    font-size: 13px;
   }
 }

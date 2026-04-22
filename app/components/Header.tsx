@@ -36,20 +36,17 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
-        {/* Logo */}
+        {/* Logo - Imagem */}
         <div className={styles.logo}>
           <button 
             onClick={handleHomeClick}
-            style={{ 
-              background: 'none', 
-              border: 'none', 
-              cursor: 'pointer', 
-              font: 'inherit',
-              color: 'inherit',
-              fontSize: 'inherit'
-            }}
+            className={styles.logoButton}
           >
-            LHF
+            <img 
+              src="/images/logo.png?v=1" 
+              alt="LHF Assessoria Esportiva"
+              className={styles.logoImage}
+            />
           </button>
         </div>
 
