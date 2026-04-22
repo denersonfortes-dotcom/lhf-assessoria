@@ -11,20 +11,68 @@ export default function Header() {
     window.location.href = '/planos';
   };
 
+  const handleNavClick = (sectionId: string) => {
+    // Se estamos na home, faz scroll. Se não, vai para home com anchor
+    if (window.location.pathname === '/') {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      window.location.href = `/#${sectionId}`;
+    }
+  };
+
   return (
     <header className={styles.header}>
       <div className={styles.container}>
         {/* Logo */}
-        <div className={styles.logo}>LHF</div>
+        <div className={styles.logo}>
+          <Link href="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+            LHF
+          </Link>
+        </div>
 
         {/* Menu Desktop */}
         <nav className={styles.nav}>
-          <a href="#home" className={styles.navLink}>Home</a>
-          <a href="#about" className={styles.navLink}>Sobre</a>
-          <a href="#services" className={styles.navLink}>Serviços</a>
-          <a href="#testimonials" className={styles.navLink}>Comunidade</a>
-          <a href="/blog" className={styles.navLink}>Blog</a>
-          <a href="#contact" className={styles.navLink}>Contato</a>
+          <button 
+            className={styles.navLink} 
+            onClick={() => handleNavClick('home')}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', font: 'inherit' }}
+          >
+            Home
+          </button>
+          <button 
+            className={styles.navLink} 
+            onClick={() => handleNavClick('about')}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', font: 'inherit' }}
+          >
+            Sobre
+          </button>
+          <button 
+            className={styles.navLink} 
+            onClick={() => handleNavClick('services')}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', font: 'inherit' }}
+          >
+            Serviços
+          </button>
+          <button 
+            className={styles.navLink} 
+            onClick={() => handleNavClick('testimonials')}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', font: 'inherit' }}
+          >
+            Comunidade
+          </button>
+          <Link href="/blog" className={styles.navLink}>
+            Blog
+          </Link>
+          <button 
+            className={styles.navLink} 
+            onClick={() => handleNavClick('contact')}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', font: 'inherit' }}
+          >
+            Contato
+          </button>
         </nav>
 
         {/* Botão CTA */}
@@ -49,48 +97,63 @@ export default function Header() {
       {/* Menu Mobile */}
       {isMobileMenuOpen && (
         <nav className={styles.mobileMenu}>
-          <a 
-            href="#home" 
+          <button 
             className={styles.mobileNavLink}
-            onClick={() => setIsMobileMenuOpen(false)}
+            onClick={() => {
+              handleNavClick('home');
+              setIsMobileMenuOpen(false);
+            }}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', font: 'inherit', width: '100%', textAlign: 'left' }}
           >
             Home
-          </a>
-          <a 
-            href="#about" 
+          </button>
+          <button 
             className={styles.mobileNavLink}
-            onClick={() => setIsMobileMenuOpen(false)}
+            onClick={() => {
+              handleNavClick('about');
+              setIsMobileMenuOpen(false);
+            }}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', font: 'inherit', width: '100%', textAlign: 'left' }}
           >
             Sobre
-          </a>
-          <a 
-            href="#services" 
+          </button>
+          <button 
             className={styles.mobileNavLink}
-            onClick={() => setIsMobileMenuOpen(false)}
+            onClick={() => {
+              handleNavClick('services');
+              setIsMobileMenuOpen(false);
+            }}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', font: 'inherit', width: '100%', textAlign: 'left' }}
           >
             Serviços
-          </a>
-          <a 
-            href="#testimonials" 
+          </button>
+          <button 
             className={styles.mobileNavLink}
-            onClick={() => setIsMobileMenuOpen(false)}
+            onClick={() => {
+              handleNavClick('testimonials');
+              setIsMobileMenuOpen(false);
+            }}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', font: 'inherit', width: '100%', textAlign: 'left' }}
           >
             Comunidade
-          </a>
-          <a 
+          </button>
+          <Link 
             href="/blog" 
             className={styles.mobileNavLink}
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Blog
-          </a>
-          <a 
-            href="#contact" 
+          </Link>
+          <button 
             className={styles.mobileNavLink}
-            onClick={() => setIsMobileMenuOpen(false)}
+            onClick={() => {
+              handleNavClick('contact');
+              setIsMobileMenuOpen(false);
+            }}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', font: 'inherit', width: '100%', textAlign: 'left' }}
           >
             Contato
-          </a>
+          </button>
           <button 
             className={styles.mobileCTAButton}
             onClick={() => {
