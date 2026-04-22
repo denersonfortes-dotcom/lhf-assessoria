@@ -1,26 +1,172 @@
-@import "tailwindcss";
+/* Importar variáveis */
+@import url('./styles/variables.css');
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Google Fonts - Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* Reset CSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-family);
+  background-color: var(--color-white);
+  color: var(--color-dark);
+  line-height: 1.6;
+  font-size: var(--font-size-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Tipografia */
+h1 {
+  font-size: var(--font-size-h1);
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--color-dark);
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--color-dark);
+  margin: 0;
+  letter-spacing: -0.3px;
+}
+
+h3 {
+  font-size: var(--font-size-h3);
+  font-weight: 700;
+  color: var(--color-dark);
+  margin: 0;
+  letter-spacing: -0.2px;
+}
+
+p {
+  color: var(--color-gray-text);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* Links */
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: all 200ms ease-in-out;
+}
+
+/* Botões base */
+button {
+  font-family: var(--font-family);
+  cursor: pointer;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-small);
+  transition: all 300ms ease-in-out;
+  font-weight: 600;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* Imagens responsivas */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Seções */
+section {
+  padding: 100px var(--spacing-lg);
+  position: relative;
+}
+
+/* Main */
+main {
+  width: 100%;
+}
+
+/* Scroll bar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-white);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #FFB81C;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  section {
+    padding: 100px var(--spacing-lg);
+  }
+
+  h1 {
+    font-size: 48px;
+  }
+
+  h2 {
+    font-size: 36px;
+  }
+
+  h3 {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 80px var(--spacing-sm);
+  }
+
+  h1 {
+    font-size: 36px;
+  }
+
+  h2 {
+    font-size: 28px;
+  }
+
+  h3 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  section {
+    padding: 60px var(--spacing-sm);
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  h3 {
+    font-size: 18px;
+  }
 }
