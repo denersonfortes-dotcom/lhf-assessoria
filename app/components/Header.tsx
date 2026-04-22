@@ -7,8 +7,8 @@ import styles from './Header.module.css';
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const handleWhatsAppClick = () => {
-    window.open('https://wa.me/YOUR_WHATSAPP_NUMBER', '_blank');
+  const handleCTAClick = () => {
+    window.location.href = '/planos';
   };
 
   return (
@@ -30,7 +30,7 @@ export default function Header() {
         {/* Botão CTA */}
         <button 
           className={styles.ctaButton}
-          onClick={handleWhatsAppClick}
+          onClick={handleCTAClick}
         >
           Quero Fazer Parte
         </button>
@@ -94,7 +94,7 @@ export default function Header() {
           <button 
             className={styles.mobileCTAButton}
             onClick={() => {
-              handleWhatsAppClick();
+              handleCTAClick();
               setIsMobileMenuOpen(false);
             }}
           >
