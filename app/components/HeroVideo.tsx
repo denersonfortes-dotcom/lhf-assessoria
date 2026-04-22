@@ -23,7 +23,8 @@ export default function HeroVideo() {
       <div className={styles.content}>
         <div className={styles.textContainer}>
           <h1 className={styles.headline}>
-            Aqui você não treina sozinho.
+            Aqui você não <br />
+            treina sozinho.
           </h1>
 
           <h2 className={styles.subheadline}>
@@ -32,7 +33,8 @@ export default function HeroVideo() {
           </h2>
 
           <p className={styles.description}>
-            Para iniciantes, corredores intermediários e atletas de performance. Sua evolução é nossa prioridade.
+            Para iniciantes, corredores intermediários e atletas <br />
+            de performance. Sua evolução é nossa prioridade.
           </p>
 
           <button className={styles.ctaButton}>
