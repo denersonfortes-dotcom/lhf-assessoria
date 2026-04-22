@@ -11,6 +11,16 @@ export default function Header() {
     window.location.href = '/planos';
   };
 
+  const handleHomeClick = () => {
+    // Se está na home, volta pro topo
+    if (window.location.pathname === '/') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      // Se não está na home, vai pra home
+      window.location.href = '/';
+    }
+  };
+
   const handleNavClick = (sectionId: string) => {
     // Se estamos na home, faz scroll. Se não, vai para home com anchor
     if (window.location.pathname === '/') {
@@ -28,16 +38,26 @@ export default function Header() {
       <div className={styles.container}>
         {/* Logo */}
         <div className={styles.logo}>
-          <Link href="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+          <button 
+            onClick={handleHomeClick}
+            style={{ 
+              background: 'none', 
+              border: 'none', 
+              cursor: 'pointer', 
+              font: 'inherit',
+              color: 'inherit',
+              fontSize: 'inherit'
+            }}
+          >
             LHF
-          </Link>
+          </button>
         </div>
 
         {/* Menu Desktop */}
         <nav className={styles.nav}>
           <button 
             className={styles.navLink} 
-            onClick={() => handleNavClick('home')}
+            onClick={handleHomeClick}
             style={{ background: 'none', border: 'none', cursor: 'pointer', font: 'inherit' }}
           >
             Home
@@ -100,7 +120,7 @@ export default function Header() {
           <button 
             className={styles.mobileNavLink}
             onClick={() => {
-              handleNavClick('home');
+              handleHomeClick();
               setIsMobileMenuOpen(false);
             }}
             style={{ background: 'none', border: 'none', cursor: 'pointer', font: 'inherit', width: '100%', textAlign: 'left' }}
