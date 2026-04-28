@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'LHF Assessoria Esportiva',
   description: 'Aqui você não treina sozinho. Você evolui com apoio, método e propósito.',
   icons: {
-    icon: '/favicon.ico',
+    icon: '/favicon.ico?v=2',
   },
 };
 

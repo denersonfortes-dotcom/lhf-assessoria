@@ -36,7 +36,7 @@ export default function Footer() {
             className={styles.logoButton}
           >
             <img 
-              src="/images/logo_amarela.png" 
+              src="/images/logo_amarela.png?v=2" 
               alt="LHF Assessoria Esportiva"
               className={styles.footerLogo}
             />

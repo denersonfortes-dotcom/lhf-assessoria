@@ -43,7 +43,7 @@ export default function Header() {
             className={styles.logoButton}
           >
             <img 
-              src="/images/logo.png?v=1" 
+              src="/images/logo.png?v=2" 
               alt="LHF Assessoria Esportiva"
               className={styles.logoImage}
             />
